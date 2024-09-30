@@ -1,0 +1,18 @@
+{
+  "name": "arrow-js-datatable",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "benchmark": "tsx --expose-gc index.ts",
+    "gen-data": "tsx gen-data.ts"
+  },
+  "dependencies": {
+    "apache-arrow": "file:../arrow/js/targets/apache-arrow",
+    "lodash": "^4.17.21",
+    "@faker-js/faker": "^9.0.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.1"
+  }
+}
