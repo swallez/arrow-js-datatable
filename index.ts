@@ -75,8 +75,6 @@ const table: Table = measure("Create arrow table", () =>
     tableFromIPC(arrowBuffer)
 );
 
-const foo = table.get(0);
-
 const numRows = table.numRows;
 console.log("datafame rows:", numRows);
 
@@ -106,7 +104,13 @@ const jsArray = measure("table to object array", () => {
 })
 
 seperator();
-measure("Read arrow, all in one", () => {
+measure("toArray, all in one", () => {
+    const arrowBuffer = readFileSync(fileName);
+    const table = tableFromIPC(arrowBuffer)
+    return table.toArray();
+})
+
+measure("toArrayView, all in one", () => {
     const arrowBuffer = readFileSync(fileName);
     const table = tableFromIPC(arrowBuffer)
     return table.toArrayView();
@@ -128,7 +132,7 @@ measure("index loop, baseline", () => {
 measure("index loop, array[i]", () => {
     let x: any;
     for (var i = 0; i < numRows; i++) {
-        x = array[i % array.length];
+        x = array[i];
     }
 });
 
@@ -136,7 +140,7 @@ measure("index loop, array[i]", () => {
 measure("index loop, arrayView[i]", () => {
     let x: any;
     for (let i = 0; i < numRows; i++) {
-        x = array[i % arrayView.length];
+        x = arrayView[i];
     }
 });
 

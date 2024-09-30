@@ -39,28 +39,29 @@ The "allocated" columns show the total amount or memory that was allocated while
 ┌─────────┬────────────────────────────┬──────────────┬────────────────┬───────────────────┬───────────────┬──────────────────┐
 │ (index) │ id                         │ time         │ allocated_heap │ allocated_buffers │ retained_heap │ retained_buffers │
 ├─────────┼────────────────────────────┼──────────────┼────────────────┼───────────────────┼───────────────┼──────────────────┤
-│ 0       │ 'Baseline, do nothing'     │ '0.008 ms'   │ '0 kB'         │ '0 kB'            │ '0 kB'        │ '0 kB'           │
+│ 0       │ 'Baseline, do nothing'     │ '0.005 ms'   │ '0 kB'         │ '0 kB'            │ '0 kB'        │ '0 kB'           │
 │ 1       │ '------------------------' │              │                │                   │               │                  │
-│ 2       │ 'Read json file'           │ '15.618 ms'  │ '+49,400 kB'   │ '+24,708 kB'      │ '+49,400 kB'  │ '0 kB'           │
-│ 3       │ 'Parse json text'          │ '92.617 ms'  │ '+24,942 kB'   │ '0 kB'            │ '+26,213 kB'  │ '0 kB'           │
-│ 4       │ 'Restructure json'         │ '1.736 ms'   │ '+8,412 kB'    │ '0 kB'            │ '+7,267 kB'   │ '0 kB'           │
+│ 2       │ 'Read json file'           │ '14.174 ms'  │ '+49,367 kB'   │ '+24,692 kB'      │ '+49,336 kB'  │ '0 kB'           │
+│ 3       │ 'Parse json text'          │ '68.157 ms'  │ '+25,080 kB'   │ '0 kB'            │ '+26,351 kB'  │ '0 kB'           │
+│ 4       │ 'Restructure json'         │ '1.602 ms'   │ '+8,260 kB'    │ '0 kB'            │ '+7,116 kB'   │ '0 kB'           │
 │ 5       │ '------------------------' │              │                │                   │               │                  │
-│ 6       │ 'Read json, all in one'    │ '97.28 ms'   │ '+83,068 kB'   │ '0 kB'            │ '+82,486 kB'  │ '0 kB'           │
+│ 6       │ 'Read json, all in one'    │ '98.067 ms'  │ '+83,007 kB'   │ '0 kB'            │ '+82,422 kB'  │ '0 kB'           │
 │ 7       │ '------------------------' │              │                │                   │               │                  │
-│ 8       │ 'Read arrow file'          │ '3.701 ms'   │ '+1 kB'        │ '+16,451 kB'      │ '0 kB'        │ '+16,451 kB'     │
-│ 9       │ 'Create arrow table'       │ '3.42 ms'    │ '+1,926 kB'    │ '0 kB'            │ '+1,841 kB'   │ '0 kB'           │
-│ 10      │ 'table.toArray()'          │ '5.924 ms'   │ '+13,853 kB'   │ '0 kB'            │ '+8,910 kB'   │ '0 kB'           │
-│ 11      │ 'table.toArrayView()'      │ '0.039 ms'   │ '0 kB'         │ '0 kB'            │ '-31 kB'      │ '0 kB'           │
-│ 12      │ 'table to object array'    │ '106.253 ms' │ '+51,027 kB'   │ '0 kB'            │ '+48,010 kB'  │ '0 kB'           │
+│ 8       │ 'Read arrow file'          │ '10.867 ms'  │ '+1 kB'        │ '+16,434 kB'      │ '0 kB'        │ '+16,434 kB'     │
+│ 9       │ 'Create arrow table'       │ '4.539 ms'   │ '+2,136 kB'    │ '0 kB'            │ '+2,114 kB'   │ '0 kB'           │
+│ 10      │ 'table.toArray()'          │ '6.23 ms'    │ '+13,533 kB'   │ '0 kB'            │ '+8,752 kB'   │ '0 kB'           │
+│ 11      │ 'table.toArrayView()'      │ '0.043 ms'   │ '0 kB'         │ '0 kB'            │ '+1 kB'       │ '0 kB'           │
+│ 12      │ 'table to object array'    │ '109.094 ms' │ '+51,104 kB'   │ '0 kB'            │ '+48,161 kB'  │ '0 kB'           │
 │ 13      │ '------------------------' │              │                │                   │               │                  │
-│ 14      │ 'Read arrow, all in one'   │ '3.831 ms'   │ '+1,680 kB'    │ '+16,451 kB'      │ '+1,615 kB'   │ '+16,451 kB'     │
-│ 15      │ '------------------------' │              │                │                   │               │                  │
-│ 16      │ 'index loop, baseline'     │ '0.457 ms'   │ '0 kB'         │ '0 kB'            │ '0 kB'        │ '0 kB'           │
-│ 17      │ 'index loop, array[i]'     │ '0.712 ms'   │ '0 kB'         │ '0 kB'            │ '0 kB'        │ '0 kB'           │
-│ 18      │ 'index loop, arrayView[i]' │ '4.247 ms'   │ '+9,377 kB'    │ '0 kB'            │ '+2 kB'       │ '0 kB'           │
-│ 19      │ '------------------------' │              │                │                   │               │                  │
-│ 20      │ 'Iterator loop, baseline'  │ '1.114 ms'   │ '+3,907 kB'    │ '0 kB'            │ '0 kB'        │ '0 kB'           │
-│ 21      │ 'Iterator loop, array'     │ '1.281 ms'   │ '+3,907 kB'    │ '0 kB'            │ '0 kB'        │ '0 kB'           │
-│ 22      │ 'Iterator loop, arrayView' │ '4.751 ms'   │ '+10,360 kB'   │ '0 kB'            │ '+64 kB'      │ '0 kB'           │
+│ 14      │ 'toArray, all in one'      │ '9.147 ms'   │ '+15,394 kB'   │ '+16,434 kB'      │ '+10,286 kB'  │ '+16,434 kB'     │
+│ 15      │ 'toArrayView, all in one'  │ '24.026 ms'  │ '+1,709 kB'    │ '+16,434 kB'      │ '+1,615 kB'   │ '+16,434 kB'     │
+│ 16      │ '------------------------' │              │                │                   │               │                  │
+│ 17      │ 'index loop, baseline'     │ '0.445 ms'   │ '0 kB'         │ '0 kB'            │ '0 kB'        │ '0 kB'           │
+│ 18      │ 'index loop, array[i]'     │ '0.549 ms'   │ '0 kB'         │ '0 kB'            │ '0 kB'        │ '0 kB'           │
+│ 19      │ 'index loop, arrayView[i]' │ '14.46 ms'   │ '+15,596 kB'   │ '0 kB'            │ '+2,335 kB'   │ '0 kB'           │
+│ 20      │ '------------------------' │              │                │                   │               │                  │
+│ 21      │ 'Iterator loop, baseline'  │ '1.102 ms'   │ '+4,114 kB'    │ '0 kB'            │ '+207 kB'     │ '0 kB'           │
+│ 22      │ 'Iterator loop, array'     │ '1.354 ms'   │ '+3,907 kB'    │ '0 kB'            │ '0 kB'        │ '0 kB'           │
+│ 23      │ 'Iterator loop, arrayView' │ '3.836 ms'   │ '+10,160 kB'   │ '0 kB'            │ '+2 kB'       │ '0 kB'           │
 └─────────┴────────────────────────────┴──────────────┴────────────────┴───────────────────┴───────────────┴──────────────────┘
 ```
